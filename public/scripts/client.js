@@ -17,7 +17,7 @@ app.filter('unique', function() {
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
         .when('/employees', {
-            templateUrl: '/views/template/employees.html',
+            templateUrl: '/views/template/employee.html',
             controller: 'EmployeesController',
             controllerAs: 'employees'
         })
@@ -27,9 +27,11 @@ app.config(['$routeProvider', function($routeProvider) {
 
 }]);
 
-app.controller('EmployeesController', ["$http", "uniqueFilter", function($http, uniqueFilter) {
+// app.controller('EmployeesController', ["$http", "uniqueFilter", function($http, uniqueFilter) {
+app.controller('EmployeesController', ["$http", function($http) {
     console.log('Employees controller running');
     var self = this;
+    var newEmployee = {};
 
       self.employees = [];
 

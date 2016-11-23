@@ -1,4 +1,4 @@
-var app = angular.module('warehouseApp', ['ngRoute']);
+var app = angular.module('employeeApp', ['ngRoute']);
 
 app.filter('unique', function() {
 
@@ -12,110 +12,40 @@ app.filter('unique', function() {
    }
    return r;
  };
-})
+});
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
-        .when('/customers', {
-            templateUrl: '/views/template/customers.html',
-            controller: 'CustomersController',
-            controllerAs: 'customers'
-        })
-        .when('/warehouses', {
-            templateUrl: '/views/template/warehouses.html',
-            controller: 'WarehousesController',
-            controllerAs: 'warehouses'
-        })
-        .when('/orders', {
-            templateUrl: '/views/template/orders.html',
-            controller: 'OrdersController',
-            controllerAs: 'orders'
-        })
-        .when('/on-hand', {
-            templateUrl: '/views/template/on-hand.html',
-            controller: 'OnHandController',
-            controllerAs: 'onHand'
+        .when('/employees', {
+            templateUrl: '/views/template/employees.html',
+            controller: 'EmployeesController',
+            controllerAs: 'employees'
         })
         .otherwise({
-            redirectTo: 'customers'
+            redirectTo: 'employees'
         });
 
 }]);
 
-app.controller('CustomersController', ["$http", "uniqueFilter", function($http, uniqueFilter) {
-    console.log('Customers controller running');
+// app.controller('EmployeesController', ["$http", "uniqueFilter", function($http, uniqueFilter) {
+app.controller('EmployeesController', ["$http", function($http) {
+    console.log('Employees controller running');
     var self = this;
+    var newEmployee = {};
 
-      self.customers = [];
+      self.employees = [];
 
-      getCustomers();
+      getEmployees();
 
       // read only
-      function getCustomers() {
-        $http.get('/customers')
+      function getEmployees() {
+        $http.get('/employees')
           .then(function(response) {
-            self.customers = response.data;
-            // console.log(self.customers);
+            self.employees = response.data;
+            // console.log(self.employees);
           });
       }
 
     self.message = "Customers controller is the best!";
 
-}]);
-
-app.controller('WarehousesController', ['$http', function($http) {
-    console.log('Warehouses controller running');
-    var self = this;
-    self.data = [];
-
-    getWarehouses();
-
-    // Get warehouses
-    function getWarehouses() {
-      $http.get('/warehouses')
-        .then(function (response) {
-          self.data = response.data;
-        }, function (error) {
-          console.log(error);
-        });
-    }
-}]);
-
-//orders controller
-app.controller('OrdersController', ['$http', function($http) {
-  var self = this;
-  self.orders = [];
-  getOrders();
-
-    console.log('Orders controller running');
-    var self = this;
-    self.message = "Orders controller is the best!";
-
-    function getOrders() {
-      $http.get('/orders')
-        .then(function(response) {
-          self.orders = response.data
-          console.log(self.orders);
-        });
-    }
-}]);
-
-app.controller('OnHandController', ["$http", function($http) {
-    console.log('On hand controller running');
-    var self = this;
-
-    getProductOnHand();
-
-    // Get product on hand
-    function getProductOnHand() {
-      $http.get('/onHand')
-        .then(function (response) {
-          self.products = response.data;
-          console.log(self.products);
-        }, function (error) {
-          console.log(error);
-        });
-    }
-
-    self.message = "On hand controller is the best!";
 }]);

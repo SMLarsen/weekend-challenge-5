@@ -1,0 +1,60 @@
+<h1>Employees</h1>
+
+<h2>Add Employee</h2>
+
+<form id="employee-form">
+    <div class="form-group">
+        <label for="first_name">First:</label>
+        <input type="text" ng-model="employees.newEmployee.first_name" name="first_name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="last_name">Last:</label>
+        <input type="text" ng-model="employees.newEmployee.last_name" name="last_name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="employee_id">Employee ID:</label>
+        <input type="text" ng-model="employees.newEmployee.employee_id" name="employee_id" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" ng-model="employees.newEmployee.title" name="title" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="salary">Salary:</label>
+        <input type="number" ng-model="employees.newEmployee.salary" name="salary" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="status">Status:</label>
+        <input type="text" ng-model="employees.newEmployee.status" name="status" class="form-control" />
+    </div>
+
+    <button class="btn btn-default" ng-click="employees.addEmployee()">Go</button>
+</form>
+
+<table class="table table-bordered">
+    <thead>
+        <tr class="active">
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Employee ID</th>
+            <th>Salary</th>
+            <th>Title</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="employeeRow" ng-repeat="employee in employees.employees">
+            <td>{{employee.first_name}}</td>
+            <td>{{employee.last_name}}</td>
+            <td>{{employee.employee_id}}</td>
+            <td>{{employee.salary}}</td>
+            <td>{{employee.title}}</td>
+            <td>{{employee.status}}</td>
+        </tr>
+    </tbody>
+</table>
