@@ -1,0 +1,29 @@
+<h1>Orders</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr class="active">
+      <th>Order Date</th>
+      <th>Description</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Address Type</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="order in orders.orders">
+      <td>{{order.order_date | date}}</td>
+      <td>{{order.description}}</td>
+      <td>{{order.street}}</td>
+      <td>{{order.city}}</td>
+      <td>{{order.state}}</td>
+      <td>{{order.zip}}</td>
+      <td>{{order.address_type}}</td>
+      <td>{{order.first_name}}</td>
+      <td>{{order.last_name}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,16 @@
+<h1>Product On Hand</h1>
+
+
+<table class="table table-bordered">
+  <thead>
+  <tr class="active">
+    <th>Description</th>
+    <th>Unit Price</th>
+    <th>Quantity on Hand</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="onHandRow" ng-repeat="product in onHand.products">
+    <td>{{product.description}}</td><td>{{product.unit_price | currency}}</td><td>{{product.product_on_hand}}</td></tr>
+  </tbody>
+</table>
