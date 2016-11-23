@@ -46,6 +46,14 @@ app.controller('EmployeesController', ["$http", function($http) {
           });
       }
 
-    self.message = "Customers controller is the best!";
+      self.addEmployee = function() {
+        console.log('new employee: ', self.newEmployee);
+        $http.post('/employees', self.newEmployee)
+          .then(function(response) {
+            console.log('POST finished. Getting employee again.');
+            getEmployees();
+          });
+      };
+
 
 }]);
