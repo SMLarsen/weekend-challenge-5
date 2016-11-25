@@ -1,6 +1,16 @@
+th {
+  text-align: center;
+}
+
 #employee-form {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
+}
+
+.inactive {
+  background-color: lightgrey;
+  color: darkgrey;
+  font-style: italic;
 }

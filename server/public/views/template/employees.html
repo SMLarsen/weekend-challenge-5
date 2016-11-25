@@ -48,11 +48,12 @@
             <th>Title</th>
             <th>Status</th>
             <th>Chg Status</th>
-            <th>Delete</th>
+            <!-- <th>Delete</th> -->
         </tr>
     </thead>
     <tbody>
-        <tr class="employeeRow" ng-repeat="employee in employees.employees">
+        <!-- <tr class="employeeRow" ng-repeat="employee in employees.employees"> -->
+          <tr class="employeeRow" ng-repeat="employee in employees.employees" ng-class="{ inactive: employee.status == 'Inactive' }" >
             <td>{{employee.first_name}}</td>
             <td>{{employee.last_name}}</td>
             <td>{{employee.employee_id}}</td>
@@ -60,7 +61,7 @@
             <td>{{employee.title}}</td>
             <td>{{employee.status}}</td>
             <td><button class="btn btn-default " ng-click="employees.toggleStatus(employee)"><i class="material-icons">highlight_off</i></button></td>
-            <td><button class="btn btn-default " ng-click="employees.deleteEmployee(employee)"><i class="material-icons">delete_forever</i></button></td>
+            <!-- <td><button class="btn btn-default " ng-click="employees.deleteEmployee(employee)"><i class="material-icons">delete_forever</i></button></td> -->
         </tr>
     </tbody>
 </table>
