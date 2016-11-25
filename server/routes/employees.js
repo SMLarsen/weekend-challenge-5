@@ -51,10 +51,34 @@ router.post('/', function(req, res) {
           res.sendStatus(201);
         }
       });
-
   });
-
 }); // end Route: add employee
 
+// Route: delete employee
+router.delete('/:id', function(req, res) {
+  console.log('starting delete');
+  var id = req.params.id;
+  console.log(id);
+  pg.connect(connectionString, function(err, client, done) {
+    if(err) {
+      console.log('connection error: ', err);
+      res.sendStatus(500);
+    }
+
+    client.query(
+      'DELETE FROM employees WHERE id = $1',
+      [id],
+      function(err, result) {
+        done();
+
+        if(err) {
+          console.log('delete query error: ', err);
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(201);
+        }
+      });
+  });
+}); // end Route: delete employee
 
 module.exports = router;

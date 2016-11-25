@@ -1,40 +1,40 @@
-<h1>Employees</h1>
-
 <h2>Add Employee</h2>
 
-<form id="employee-form">
+<form id="employee-form" class="container">
     <div class="form-group">
-        <label for="first_name">First:</label>
-        <input type="text" ng-model="employees.newEmployee.first_name" name="first_name" class="form-control" />
+        <!-- <label for="first_name">First:</label> -->
+        <input type="text" ng-model="employees.newEmployee.first_name" name="first_name" placeholder="First" />
     </div>
 
     <div class="form-group">
-        <label for="last_name">Last:</label>
-        <input type="text" ng-model="employees.newEmployee.last_name" name="last_name" class="form-control" />
+        <!-- <label for="last_name">Last:</label> -->
+        <input type="text" ng-model="employees.newEmployee.last_name" name="last_name" placeholder="Last" />
     </div>
 
     <div class="form-group">
-        <label for="employee_id">Employee ID:</label>
-        <input type="text" ng-model="employees.newEmployee.employee_id" name="employee_id" class="form-control" />
+        <!-- <label for="employee_id">Employee ID:</label> -->
+        <input type="text" ng-model="employees.newEmployee.employee_id" name="employee_id" placeholder="Emp ID" />
     </div>
 
     <div class="form-group">
-        <label for="title">Title:</label>
-        <input type="text" ng-model="employees.newEmployee.title" name="title" class="form-control" />
+        <!-- <label for="salary">Salary:</label> -->
+        <input type="number" ng-model="employees.newEmployee.salary" name="salary" placeholder="Salary" />
     </div>
+
+        <div class="form-group">
+            <!-- <label for="title">Title:</label> -->
+            <input type="text" ng-model="employees.newEmployee.title" name="title" placeholder="Title" />
+        </div>
 
     <div class="form-group">
-        <label for="salary">Salary:</label>
-        <input type="number" ng-model="employees.newEmployee.salary" name="salary" class="form-control" />
+        <!-- <label for="status">Status:</label> -->
+        <input type="text" ng-model="employees.newEmployee.status" name="status" placeholder="Status" />
     </div>
 
-    <div class="form-group">
-        <label for="status">Status:</label>
-        <input type="text" ng-model="employees.newEmployee.status" name="status" class="form-control" />
-    </div>
-
-    <button class="btn btn-default" ng-click="employees.addEmployee()">Go</button>
+    <button class="btn btn-default" ng-click="employees.addEmployee()"><i class="material-icons">add</i></button>
 </form>
+
+<h2>Employee Listing</h2>
 
 <table class="table table-bordered">
     <thead>
@@ -45,6 +45,7 @@
             <th>Salary</th>
             <th>Title</th>
             <th>Status</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -55,6 +56,7 @@
             <td>{{employee.salary}}</td>
             <td>{{employee.title}}</td>
             <td>{{employee.status}}</td>
+            <td><button class="btn btn-default " ng-click="employees.deleteEmployee(employee)"><i class="material-icons">delete_forever</i></button></td>
         </tr>
     </tbody>
 </table>

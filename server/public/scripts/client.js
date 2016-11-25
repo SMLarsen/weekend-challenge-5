@@ -37,15 +37,16 @@ app.controller('EmployeesController', ["$http", function($http) {
 
       getEmployees();
 
-      // read only
+      // function: getEmployees - read only
       function getEmployees() {
         $http.get('/employees')
           .then(function(response) {
             self.employees = response.data;
             // console.log(self.employees);
           });
-      }
+      } // end function getEmployees
 
+      // function addEmployee - insert
       self.addEmployee = function() {
         console.log('new employee: ', self.newEmployee);
         $http.post('/employees', self.newEmployee)
@@ -53,7 +54,16 @@ app.controller('EmployeesController', ["$http", function($http) {
             console.log('POST finished. Getting employee again.');
             getEmployees();
           });
-      };
+      }; // end addEmployee
 
+      // function: deleteEmployee - delete
+      self.deleteEmployee = function(employee) {
+        console.log('delete employee: ', employee);
+        $http.delete('/employees/' + employee.id)
+          .then(function(response) {
+            console.log('DELETE finished. Getting employee again.');
+            getEmployees();
+          });
+      }; // end deleteEmployee
 
 }]);
