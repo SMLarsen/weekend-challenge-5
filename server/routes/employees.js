@@ -34,7 +34,7 @@ router.get('/salary', function(req, res) {
             console.log('connection error: ', err);
             res.sendStatus(500);
         }
-        client.query('SELECT SUM(salary) / 12 AS monthly_salaries FROM employees',
+        client.query("SELECT SUM(salary) / 12 AS monthly_salaries FROM employees WHERE status = 'Active'",
             function(err, result) {
                 done(); // close the connection.
 
