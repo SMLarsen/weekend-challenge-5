@@ -52,7 +52,7 @@ app.controller('EmployeesController', ["$http", function($http) {
         $http.get('/employees/salary')
           .then(function(response) {
             self.monthlySalaries = response.data[0].monthly_salaries;
-            console.log(self.monthlySalaries);
+            // console.log(self.monthlySalaries);
           });
       } // end function getSalaries
 
@@ -76,6 +76,21 @@ app.controller('EmployeesController', ["$http", function($http) {
           });
       }; // end deleteEmployee
 
+      // function: toggleStatus - update
+      self.toggleStatus = function(employee) {
+        var status = '';
+        if (employee.status === "Active") {
+          status = "Inactive";
+        } else {
+          status = "Active";
+        }
+        // console.log('toggle status: ', employee);
+        $http.put('/employees/status/' + employee.id + '/' + status)
+          .then(function(response) {
+            console.log('STATUS changed. Getting employee again.');
+            getEmployees();
+          });
+      }; // end toggleStatus
 
 
 }]);

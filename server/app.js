@@ -6,6 +6,7 @@ var path = require('path');
 var employees = require('./routes/employees');
 var PORT = 3000;
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // needed by Angular
 
 app.use('/employees', employees);

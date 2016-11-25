@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
             console.log('connection error: ', err);
             res.sendStatus(500);
         }
-        client.query('SELECT * FROM employees',
+        client.query('SELECT * FROM employees ORDER BY last_name, first_name',
             function(err, result) {
                 done(); // close the connection.
 
@@ -28,7 +28,7 @@ router.get('/', function(req, res) {
 
 // Route: get employees monthly salary
 router.get('/salary', function(req, res) {
-    console.log('Getting sum of salaries');
+    // console.log('Getting sum of salaries');
     pg.connect(connectionString, function(err, client, done) {
         if (err) {
             console.log('connection error: ', err);
@@ -42,7 +42,7 @@ router.get('/salary', function(req, res) {
                     console.log('sum salary query error: ', err);
                     res.sendStatus(500);
                 }
-                console.log(result.rows);
+                // console.log(result.rows);
                 res.send(result.rows);
             });
     });
@@ -102,5 +102,32 @@ router.delete('/:id', function(req, res) {
       });
   });
 }); // end Route: delete employee
+
+// Route: update status - update
+router.put('/status/:id/:status', function(req, res) {
+  id = req.params.id;
+  status = req.params.status;
+
+  console.log('employee to update ', id, status);
+
+  pg.connect(connectionString, function(err, client, done) {
+    if(err) {
+      console.log('connection error: ', err);
+      res.sendStatus(500);
+    }
+
+    client.query(
+      'UPDATE employees SET status = $1 WHERE id = $2',
+      [status, id],
+      function(err, result) {
+        if(err) {
+          console.log('status update error: ', err);
+          res.sendStatus(500);
+        } else {
+          res.sendStatus(200);
+        }
+      });
+    }); // close connect
+}); // end update status route
 
 module.exports = router;
