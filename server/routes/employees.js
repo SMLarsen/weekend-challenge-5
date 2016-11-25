@@ -26,6 +26,28 @@ router.get('/', function(req, res) {
     });
 }); // end Route: get employees
 
+// Route: get employees monthly salary
+router.get('/salary', function(req, res) {
+    console.log('Getting sum of salaries');
+    pg.connect(connectionString, function(err, client, done) {
+        if (err) {
+            console.log('connection error: ', err);
+            res.sendStatus(500);
+        }
+        client.query('SELECT SUM(salary) / 12 AS monthly_salaries FROM employees',
+            function(err, result) {
+                done(); // close the connection.
+
+                if (err) {
+                    console.log('sum salary query error: ', err);
+                    res.sendStatus(500);
+                }
+                console.log(result.rows);
+                res.send(result.rows);
+            });
+    });
+}); // end Route: get employees monthly salary
+
 // Route: post employee
 router.post('/', function(req, res) {
   console.log('starting post');

@@ -42,9 +42,19 @@ app.controller('EmployeesController', ["$http", function($http) {
         $http.get('/employees')
           .then(function(response) {
             self.employees = response.data;
+            getSalaries();
             // console.log(self.employees);
           });
       } // end function getEmployees
+
+      // function: getSalaries - read only
+      function getSalaries() {
+        $http.get('/employees/salary')
+          .then(function(response) {
+            self.monthlySalaries = response.data[0].monthly_salaries;
+            console.log(self.monthlySalaries);
+          });
+      } // end function getSalaries
 
       // function addEmployee - insert
       self.addEmployee = function() {
@@ -65,5 +75,7 @@ app.controller('EmployeesController', ["$http", function($http) {
             getEmployees();
           });
       }; // end deleteEmployee
+
+
 
 }]);
