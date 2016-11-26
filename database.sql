@@ -8,6 +8,38 @@ CREATE TABLE employees (
     status character varying(10)
 );
 
+-- Short Data
+INSERT INTO employees (first_name, last_name, employee_id, salary, title, status)
+VALUES
+('Noah', 'Smith', 5900864, 191000, 'Application Developer', 'Active'),
+( 'Ethan',  'Williams', 5715139, 175000, 'Applications Engineer', 'Active'),
+( 'Mason',  'Jones', 5214829, 144000,  'Associate Developer', 'Active'),
+( 'Lucas',  'Brown', 5384113, 46000, 'Chief Technology Officer (CTO)', 'Active'),
+( 'Oliver', 'Davis', 5501765, 156000,  'Chief Information Officer (CIO)', 'Active'),
+( 'Benjamin',  'Taylor', 5394986, 116000,  'Customer Support Specialist', 'Active'),
+( 'Jackson', 'Jackson', 5582936, 220000, 'Database Administrator', 'Active'),
+( 'Carter',  'Martin', 5511765, 88000,  'Developer', 'Active'),
+( 'William',  'Garcia', 5950627, 37000, 'Front End Developer', 'Active'),
+( 'Matthew',  'Lewis', 5531306, 76000, 'Information Technology Manager', 'Active'),
+( 'Henry',  'Lee', 5660570, 74000,  'IT Support Manager', 'Active'),
+( 'Sebastian',  'Walker', 5173460, 53000, 'IT Support Specialist', 'Active'),
+( 'Wyatt',  'Hall', 5949584, 119000,  'IT Systems Administrator', 'Active'),
+('Nathan',  'Young', 5313342, 44000, 'Junior Software Engineer', 'Active'),
+( 'Jaxon',  'Lopez', 5960077, 106000,  'Network Engineer', 'Active'),
+( 'David',  'Hill', 5805085, 77000, 'Network Systems Administrator', 'Active'),
+( 'Caleb', 'Scott', 5783224, 192000,  'Programmer', 'Active'),
+( 'Eli',  'Green', 5730512, 139000,  'Programmer Analyst', 'Active'),
+('Levi',  'Adams', 5530641, 196000, 'Security Specialist', 'Active'),
+( 'Julian',  'Baker', 5678770, 221000,  'Senior Applications Engineer', 'Active'),
+( 'Olivia',  'Perez', 5341066, 127000, 'Senior Programmer', 'Active'),
+( 'Isabella',  'Phillips', 5937475, 187000,  'Senior Software Engineer', 'Active'),
+( 'Lily',  'Rogers', 5007587, 132000, 'Senior Web Developer', 'Active'),
+('Grace',  'Ward', 5745172, 46000,  'Technical Support Engineer', 'Active'),
+( 'Victoria',  'James', 5632960, 201000,  'Web Developer', 'Active'),
+( 'Brooklyn',  'Watson', 5336494, 44000, 'Webmaster', 'Active'),
+
+
+-- Long Data
 INSERT INTO employees (first_name, last_name, employee_id, salary, title, status)
 VALUES
 ('Noah', 'Smith', 5900864, 191000, 'Application Developer', 'Active'),

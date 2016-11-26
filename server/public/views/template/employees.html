@@ -60,7 +60,8 @@
             <td>{{employee.salary}}</td>
             <td>{{employee.title}}</td>
             <td>{{employee.status}}</td>
-            <td><button class="btn btn-default " ng-click="employees.toggleStatus(employee)"><i class="material-icons">highlight_off</i></button></td>
+            <td><button class="btn btn-default " ng-click="employees.toggleStatus(employee)">
+<span> {{ employee.status === 'Active' ? 'Deactivate' : 'Reactivate' }}"</span>            </button></td>
             <!-- <td><button class="btn btn-default " ng-click="employees.deleteEmployee(employee)"><i class="material-icons">delete_forever</i></button></td> -->
         </tr>
     </tbody>

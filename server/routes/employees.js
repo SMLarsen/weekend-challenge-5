@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
             console.log('connection error: ', err);
             res.sendStatus(500);
         }
-        client.query('SELECT * FROM employees ORDER BY last_name, first_name',
+        client.query('SELECT * FROM employees ORDER BY status, last_name, first_name',
             function(err, result) {
                 done(); // close the connection.
 
