@@ -134,11 +134,20 @@ app.controller('BudgetsController', ['$http', 'monthlyBudget', function($http, m
 
     // function addBudget - insert
     self.addBudget = function() {
-        console.log('new budget: ', self.newBudget);
+        var mon = self.newBudget.month_char;
+        self.newBudget.month = self.getMonthValue(mon);
         $http.post('/budgets', self.newBudget)
             .then(function(response) {
                 console.log('POST finishedBudgets budget again.');
                 getBudgets();
             });
     }; // end addBudget
+
+    // get numeric value for month
+    self.getMonthValue = function(mon) {
+      date = mon +" 1, 2000";
+      return new Date(Date.parse(date)).getMonth()+1;
+    }; // end getMonthValue
+
+
 }]);

@@ -6,7 +6,7 @@
 <form id="budget-form" class="container">
     <div class="form-group col-md-2 col-md-offset-2">
         <!-- <label for="month">First:</label> -->
-        <input type="text" ng-model="budgets.newBudget.month" name="month" placeholder="Month" />
+        <input type="text" ng-model="budgets.newBudget.month_char" name="month" placeholder="Month" />
     </div>
 
     <div class="form-group col-md-2">
@@ -35,9 +35,9 @@
     <tbody>
         <!-- <tr class="budgetRow" ng-repeat="budget in budgets.budgets"> -->
           <tr class="budgetRow" ng-repeat="budget in budgets.budgets" >
-            <td>{{budget.month}}</td>
+            <td>{{budget.month_char}}</td>
             <td>{{budget.year}}</td>
-            <td class="text-right">{{budget.monthly_budget}}</td>
+            <td class="text-right">{{budget.monthly_budget | currency}}</td>
         </tr>
     </tbody>
 </table>

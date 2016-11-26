@@ -38,9 +38,9 @@ router.post('/', function(req, res) {
     }
 
     client.query(
-      'INSERT INTO budget (month, year, monthly_budget) ' +
-      'VALUES ($1, $2, $3)',
-      [newBudget.month, newBudget.year, newBudget.monthly_budget],
+      'INSERT INTO budget (month, month_char, year, monthly_budget) ' +
+      'VALUES ($1, $2, $3, $4)',
+      [newBudget.month, newBudget.month_char, newBudget.year, newBudget.monthly_budget],
       function(err, result) {
         done();
 
