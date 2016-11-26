@@ -2,7 +2,7 @@ th {
   text-align: center;
 }
 
-#employee-form {
+#employee-form, #budget-form {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -11,33 +11,9 @@ th {
 
 .inactive {
   background-color: lightgrey;
-  color: darkgrey;
+  color: #a41425;
   font-style: italic;
 }
-
-.name {
-  width: 11%;
-}
-
-.employeeId {
-  width: 9%;
-  text-align: center;
-}
-
-.salary {
-  width: 9%;
-  text-align: right;
-}
-
-.title {
-  width: 50%;
-}
-
-.status {
-  text-align: center;
-}
-
-
 
 .statusButton, .deleteButton {
   margin:auto;

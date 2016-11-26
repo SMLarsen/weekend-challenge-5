@@ -1,0 +1,42 @@
+<h2>Monthly Budgets</h2>
+
+<h2>Add Budget</h2>
+
+<form id="budget-form" class="container">
+    <div class="form-group">
+        <!-- <label for="month">First:</label> -->
+        <input type="text" ng-model="budgets.newBudget.month" name="month" placeholder="Month" />
+    </div>
+
+    <div class="form-group">
+        <!-- <label for="year">Last:</label> -->
+        <input type="text" ng-model="budgets.newBudget.year" name="year" placeholder="Year" />
+    </div>
+
+    <div class="form-group">
+        <!-- <label for="budget">Budget:</label> -->
+        <input type="number" ng-model="budgets.newBudget.monthly_budget" name="monthly_budget" placeholder="Budget" />
+    </div>
+
+    <button class="btn btn-default" ng-click="budgets.addBudget()"><i class="material-icons">add</i></button>
+</form>
+
+<h2>Budget History</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr class="active">
+            <th>Month</th>
+            <th>Year</th>
+            <th>Budget</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- <tr class="budgetRow" ng-repeat="budget in budgets.budgets"> -->
+          <tr class="budgetRow" ng-repeat="budget in budgets.budgets" >
+            <td>{{budget.month}}</td>
+            <td>{{budget.year}}</td>
+            <td class="text-right">{{budget.monthly_budget}}</td>
+        </tr>
+    </tbody>
+</table>

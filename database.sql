@@ -38,8 +38,8 @@ VALUES
 ( 'Lily',  'Rogers', 5007587, 132000, 'Senior Web Developer', 'Active'),
 ('Grace',  'Ward', 5745172, 46000,  'Technical Support Engineer', 'Active'),
 ( 'Victoria',  'James', 5632960, 201000,  'Web Developer', 'Active'),
-( 'Brooklyn',  'Watson', 5336494, 44000, 'Webmaster', 'Active'),
-
+( 'Brooklyn',  'Watson', 5336494, 44000, 'Webmaster', 'Active')
+;
 
 -- Long Data
 INSERT INTO employees (first_name, last_name, employee_id, salary, title, status)
@@ -124,3 +124,31 @@ VALUES
 ( 'Nora',  'Wood', 5825193, 160000, 'Desktop Support Specialist', 'Active'),
 ( 'Stella',  'Barnes', 5207815, 122000,  'Developer', 'Active'),
 ( 'Skylar',  'Ross', 5447226, 185000,  'Director of Technology', 'Active');
+
+CREATE TABLE budget (
+    id SERIAL PRIMARY KEY,
+    month INTEGER,
+    year INTEGER,
+    monthly_budget MONEY
+);
+
+INSERT INTO budget (month, year, monthly_budget)
+VALUES
+(10, 2015, 250000),
+(11, 2015, 262000),
+(12, 2015, 260000),
+(1, 2016, 250000),
+(2, 2016, 250000),
+(3, 2016, 260000),
+(4, 2016, 260000),
+(5, 2016, 260000),
+(6, 2016, 240000),
+(7, 2016, 240000),
+(8, 2016, 240000),
+(9, 2016, 225000),
+(10, 2016, 225000),
+(11, 2016, 225000),
+(12, 2016, 225000)
+;
+
+SELECT * FROM budget ORDER BY year, month;

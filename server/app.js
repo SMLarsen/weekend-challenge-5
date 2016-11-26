@@ -4,12 +4,14 @@ var app = express();
 var bodyParser = require('body-parser');
 var path = require('path');
 var employees = require('./routes/employees');
+var budgets = require('./routes/budgets');
 var PORT = 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); // needed by Angular
 
 app.use('/employees', employees);
+app.use('/budgets', budgets);
 
 app.get('/', function (req, res) {
   res.sendFile(path.resolve('./server/public/views/index.html'));
