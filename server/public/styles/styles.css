@@ -14,3 +14,37 @@ th {
   color: darkgrey;
   font-style: italic;
 }
+
+.name {
+  width: 11%;
+}
+
+.employeeId {
+  width: 9%;
+  text-align: center;
+}
+
+.salary {
+  width: 9%;
+  text-align: right;
+}
+
+.title {
+  width: 50%;
+}
+
+.status {
+  text-align: center;
+}
+
+
+
+.statusButton, .deleteButton {
+  margin:auto;
+  display:block;
+  height: 40px;
+}
+
+.table > tbody > tr > td {
+     vertical-align: middle;
+}

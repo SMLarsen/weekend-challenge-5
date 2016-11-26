@@ -51,6 +51,7 @@ router.get('/salary', function(req, res) {
 // Route: post employee
 router.post('/', function(req, res) {
   console.log('starting post');
+  var status = 'Active';
   var newEmployee = req.body;
   console.log(newEmployee);
   pg.connect(connectionString, function(err, client, done) {
@@ -62,7 +63,7 @@ router.post('/', function(req, res) {
     client.query(
       'INSERT INTO employees (first_name, last_name, employee_id, salary, title, status) ' +
       'VALUES ($1, $2, $3, $4, $5, $6)',
-      [newEmployee.first_name, newEmployee.last_name, newEmployee.employee_id, newEmployee.salary, newEmployee.title, newEmployee.status],
+      [newEmployee.first_name, newEmployee.last_name, newEmployee.employee_id, newEmployee.salary, newEmployee.title, status],
       function(err, result) {
         done();
 

@@ -1,3 +1,5 @@
+DROP TABLE employees;
+
 CREATE TABLE employees (
     id SERIAL PRIMARY KEY,
     first_name character varying(60),

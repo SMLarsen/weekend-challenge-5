@@ -28,10 +28,10 @@
             <input type="text" ng-model="employees.newEmployee.title" name="title" placeholder="Title" />
         </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group"> -->
         <!-- <label for="status">Status:</label> -->
-        <input type="text" ng-model="employees.newEmployee.status" name="status" placeholder="Status" />
-    </div>
+        <!-- <input type="text" ng-model="employees.newEmployee.status" name="status" placeholder="Status" /> -->
+    <!-- </div> -->
 
     <button class="btn btn-default" ng-click="employees.addEmployee()"><i class="material-icons">add</i></button>
 </form>
@@ -48,7 +48,7 @@
             <th>Title</th>
             <th>Status</th>
             <th>Chg Status</th>
-            <!-- <th>Delete</th> -->
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -56,13 +56,13 @@
           <tr class="employeeRow" ng-repeat="employee in employees.employees" ng-class="{ inactive: employee.status == 'Inactive' }" >
             <td>{{employee.first_name}}</td>
             <td>{{employee.last_name}}</td>
-            <td>{{employee.employee_id}}</td>
-            <td>{{employee.salary}}</td>
+            <td class="text-center">{{employee.employee_id}}</td>
+            <td class="text-right">{{employee.salary}}</td>
             <td>{{employee.title}}</td>
-            <td>{{employee.status}}</td>
-            <td><button class="btn btn-default " ng-click="employees.toggleStatus(employee)">
-<span> {{ employee.status === 'Active' ? 'Deactivate' : 'Reactivate' }}"</span>            </button></td>
-            <!-- <td><button class="btn btn-default " ng-click="employees.deleteEmployee(employee)"><i class="material-icons">delete_forever</i></button></td> -->
+            <td class="text-center">{{employee.status}}</td>
+            <td><button class="btn btn-default statusButton" ng-click="employees.toggleStatus(employee)">
+              <span> {{ employee.status === 'Active' ? 'Deactivate' : 'Reactivate' }}"</span>            </button></td>
+            <td><button class="btn btn-default deleteButton" ng-click="employees.deleteEmployee(employee)"><i class="material-icons">delete_forever</i></button></td>
         </tr>
     </tbody>
 </table>
