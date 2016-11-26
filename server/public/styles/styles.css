@@ -1,3 +1,28 @@
+.jumbotron {
+  font-weight: bold;
+  background-color: #45618a;
+  border: 20px inset #bd322d;
+  /*height: 100px;*/
+  margin: 0;
+  padding: 0;
+}
+
+.jumbotron h1 {
+  margin: 0;
+  padding: 0;
+  font-family: 'Audiowide', cursive;
+  font-size: 10em;
+  color: #a22c28;
+  text-shadow: 5px 5px #ffffff;
+}
+
+h2 {
+  font-size: 1.5em;
+  background-color: #45618a;
+  color: white;
+  padding: 10px;
+}
+
 th {
   text-align: center;
 }
@@ -21,6 +46,16 @@ th {
   height: 40px;
 }
 
+table th {
+    width: auto !important;
+}
+
 .table > tbody > tr > td {
      vertical-align: middle;
+}
+
+#budgetAnalysis td {
+  font-size: 1.5em;
+  text-align: right;
+  padding-left: 25px;
 }
