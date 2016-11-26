@@ -44,7 +44,7 @@ app.factory('monthlyBudget', ['$http', function monthlyBudgetFactory($http) {
 app.controller('EmployeesController', ['monthlyBudget', '$http', function(monthlyBudget, $http) {
     console.log('Employees controller running');
     var self = this;
-    this.currentBudget = monthlyBudget.monthly_budget;
+    self.currentBudget = monthlyBudget.monthly_budget;
     var newEmployee = {};
 
     self.employees = [];
@@ -67,6 +67,8 @@ app.controller('EmployeesController', ['monthlyBudget', '$http', function(monthl
             .then(function(response) {
                 self.monthlySalaries = response.data[0].monthly_salaries;
                 // console.log(self.monthlySalaries);
+                self.budgetVariance = self.monthlySalaries - self.currentBudget;
+                console.log(self.monthlySalaries, self.currentBudget, self.budgetVariance);
             });
     } // end function getSalaries
 
