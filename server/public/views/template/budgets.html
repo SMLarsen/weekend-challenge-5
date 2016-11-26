@@ -1,43 +1,72 @@
-<h2>Monthly Budgets</h2>
-
-<h2>Budget this month: {{budgets.currentBudget | currency:"$"}}</h2>
-<h2>Add Budget</h2>
-
-<form id="budget-form" class="container">
-    <div class="form-group col-md-2 col-md-offset-2">
-        <!-- <label for="month">First:</label> -->
-        <input type="text" ng-model="budgets.newBudget.month_char" name="month" placeholder="Month" />
-    </div>
-
-    <div class="form-group col-md-2">
-        <!-- <label for="year">Last:</label> -->
-        <input type="text" ng-model="budgets.newBudget.year" name="year" placeholder="Year" />
-    </div>
-
-    <div class="form-group col-md-3">
-        <!-- <label for="budget">Budget:</label> -->
-        <input type="number" ng-model="budgets.newBudget.monthly_budget" name="monthly_budget" placeholder="Budget" />
-    </div>
-
-    <button class="btn btn-default col-md-1" ng-click="budgets.addBudget()"><i class="material-icons">add</i></button>
-</form>
-
-<h2>Budget History</h2>
-
-<table class="table table-bordered">
-    <thead>
-        <tr class="active">
-            <th class="col-md-2 col-md-offset-2">Month</th>
-            <th class="col-md-2">Year</th>
-            <th class="col-md-2">Budget</th>
-        </tr>
-    </thead>
+<table class="budgetAnalysis">
     <tbody>
-        <!-- <tr class="budgetRow" ng-repeat="budget in budgets.budgets"> -->
-          <tr class="budgetRow" ng-repeat="budget in budgets.budgets" >
-            <td>{{budget.month_char}}</td>
-            <td>{{budget.year}}</td>
-            <td class="text-right">{{budget.monthly_budget | currency}}</td>
+        <tr>
+            <td>Budget this month:</td>
+            <td>{{budgets.currentBudget | currency:"$"}}</td>
         </tr>
     </tbody>
 </table>
+
+<div class="budget-input container col-md-6">
+    <h2>Add Budget</h2>
+
+    <form id="budget-form">
+
+
+        <div class="form-group">
+            <label for="month">Month</label>
+            <!-- <input type="text" ng-model="budgets.newBudget.month_char" name="month" placeholder="Month" /> -->
+            <select class="form-control" ng-model="budgets.newBudget.month_char" name="month" placeholder="Month" />
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
+        </div>
+
+                <div class="form-group">
+                    <label for="year">Year</label>
+                    <input class="form-control" type="text" ng-model="budgets.newBudget.year" name="year"/>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">Budget Amount</label>
+                    <input class="form-control" type="number" ng-model="budgets.newBudget.monthly_budget" name="monthly_budget" />
+                </div>
+
+        <button class="btn btn-primary" ng-click="budgets.addBudget()"><i class="material-icons">add</i></button>
+    </form>
+
+</div>
+
+<div class="budget-history col-md-6">
+
+    <h2>Budget History</h2>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr class="active">
+                <th class="col-md-2 col-md-offset-2">Month</th>
+                <th class="col-md-2">Year</th>
+                <th class="col-md-2">Budget</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr class="budgetRow" ng-repeat="budget in budgets.budgets"> -->
+            <tr class="budgetRow" ng-repeat="budget in budgets.budgets">
+                <td>{{budget.month_char}}</td>
+                <td class="text-center">{{budget.year}}</td>
+                <td class="text-right">{{budget.monthly_budget | currency}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

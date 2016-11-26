@@ -22,28 +22,31 @@ app.config(['$routeProvider', function($routeProvider) {
 // app.value('CurrentBudget', '240000');
 
 app.factory('monthlyBudget', ['$http', function monthlyBudgetFactory($http) {
-  console.log('Budget Factory Runnning');
-  var self = this;
-  var currBudget = {};
-  var today = new Date();
-  var currMonth = today.getMonth() + 1;
-  var currYear = today.getFullYear();
+    console.log('Budget Factory Runnning');
+    var self = this;
+    var currBudget = {};
+    var today = new Date();
+    var currMonth = today.getMonth() + 1;
+    var currYear = today.getFullYear();
 
-  $http.get('/budgets/' + currMonth + '/' + currYear)
-      .then(function(response) {
-        console.log(response.data[0]);
-          currBudget.monthly_budget = response.data[0].monthly_budget;
-      });
-      console.log('Current budget:', currBudget.monthly_budget);
-      console.log(currBudget);
-      return currBudget;
-}]);  // end of currentbudget factory
+    $http.get('/budgets/' + currMonth + '/' + currYear)
+        .then(function(response) {
+            console.log(response.data[0]);
+            currBudget.monthly_budget = response.data[0].monthly_budget;
+        });
+    console.log('Current budget:', currBudget.monthly_budget);
+    console.log(currBudget);
+    return currBudget;
+}]); // end of currentbudget factory
 
 //=================  Controllers  =================================
 
 app.controller('EmployeesController', ['monthlyBudget', '$http', function(monthlyBudget, $http) {
     console.log('Employees controller running');
     var self = this;
+
+    self.months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
     self.currentBudget = monthlyBudget.monthly_budget;
     var newEmployee = {};
 
@@ -145,8 +148,8 @@ app.controller('BudgetsController', ['$http', 'monthlyBudget', function($http, m
 
     // get numeric value for month
     self.getMonthValue = function(mon) {
-      date = mon +" 1, 2000";
-      return new Date(Date.parse(date)).getMonth()+1;
+        date = mon + " 1, 2000";
+        return new Date(Date.parse(date)).getMonth() + 1;
     }; // end getMonthValue
 
 
