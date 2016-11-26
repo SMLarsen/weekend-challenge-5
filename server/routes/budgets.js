@@ -54,4 +54,34 @@ router.post('/', function(req, res) {
   });
 }); // end Route: add budget
 
+
+// Route: getCurrentBudget
+router.get('/:month/:year', function(req, res) {
+  console.log('starting get current budget');
+  var month = req.params.month;
+  var year = req.params.year;
+  console.log(month, year);
+  pg.connect(connectionString, function(err, client, done) {
+    if(err) {
+      console.log('connection error: ', err);
+      res.sendStatus(500);
+    }
+
+    client.query(
+      'SELECT  monthly_budget FROM budget WHERE month = $1 AND year = $2',
+      [month, year],
+      function(err, result) {
+        done();
+
+        if(err) {
+          console.log('get curr budget query error: ', err);
+          res.sendStatus(500);
+        } else {
+          res.send(result.rows);
+        }
+      });
+  });
+}); // end Route: get currentBudget
+
+
 module.exports = router;
