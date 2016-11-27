@@ -1,13 +1,15 @@
-<table class="budgetAnalysis">
-    <tbody>
-        <tr>
-            <td>Budget this month:</td>
-            <td>{{budgets.currentBudget | currency:"$"}}</td>
-        </tr>
-    </tbody>
-</table>
-
 <div class="budget-input container col-md-6">
+    <h2>Budget Info</h2>
+
+    <table class="budgetAnalysis">
+        <tbody>
+            <tr>
+                <td>Budget this month:</td>
+                <td>{{budgets.currentBudget | currency:"$"}}</td>
+            </tr>
+        </tbody>
+    </table>
+    
     <h2>Add Budget</h2>
 
     <form id="budget-form">
