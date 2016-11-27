@@ -4,15 +4,16 @@
 
     <table class="budgetAnalysis">
         <tbody>
-            <tr>
-                <td>Expense:</td>
-                <td>{{employees.monthlySalaries | currency}}</td>
-            </tr>
+
             <tr>
                 <td>Budget:</td>
                 <td>{{employees.currentBudget | currency}}</td>
             </tr>
             <tr>
+                <td>Expense:</td>
+                <td>{{employees.monthlySalaries | currency}}</td>
+            </tr>
+            <tr id="variance">
                 <td>Variance:</td>
                 <td>{{employees.budgetVariance | currency}}</td>
             </tr>

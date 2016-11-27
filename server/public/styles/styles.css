@@ -37,7 +37,7 @@ th {
 }*/
 
 .inactive {
-  background-color: lightgrey;
+  background-color: #b5c4bc;
   color: #ec524d;
   font-style: italic;
 }
@@ -67,4 +67,12 @@ table th {
 
 .navbar-btn {
   font-size: 1.5em;
+}
+
+#variance {
+  border-top: 1px solid black;
+}
+
+#navView {
+  margin-top: 15px;
 }
