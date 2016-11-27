@@ -1,83 +1,88 @@
-<table class="budgetAnalysis">
-  <tbody>
-    <tr>
-      <td>Monthly Salary Expense:</td>
-      <td>{{employees.monthlySalaries | currency}}</td>
-    </tr>
-    <tr>
-      <td>Budget this month:</td>
-      <td>{{employees.currentBudget | currency}}</td>
-    </tr>
-    <tr>
-      <td>Variance:</td>
-      <td>{{employees.budgetVariance | currency}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="employees-analysis col-md-3">
 
-<h2>Add Employee</h2>
+    <h2>Monthly Analysis</h2>
 
-<form id="employee-form" class="container">
-    <div class="form-group">
-        <!-- <label for="first_name">First:</label> -->
-        <input type="text" ng-model="employees.newEmployee.first_name" name="first_name" placeholder="First" />
-    </div>
+    <table class="budgetAnalysis">
+        <tbody>
+            <tr>
+                <td>Expense:</td>
+                <td>{{employees.monthlySalaries | currency}}</td>
+            </tr>
+            <tr>
+                <td>Budget:</td>
+                <td>{{employees.currentBudget | currency}}</td>
+            </tr>
+            <tr>
+                <td>Variance:</td>
+                <td>{{employees.budgetVariance | currency}}</td>
+            </tr>
+        </tbody>
+    </table>
 
-    <div class="form-group">
-        <!-- <label for="last_name">Last:</label> -->
-        <input type="text" ng-model="employees.newEmployee.last_name" name="last_name" placeholder="Last" />
-    </div>
+    <h2>Add Employee</h2>
 
-    <div class="form-group">
-        <!-- <label for="employee_id">Employee ID:</label> -->
-        <input type="text" ng-model="employees.newEmployee.employee_id" name="employee_id" placeholder="Emp ID" />
-    </div>
-
-    <div class="form-group">
-        <!-- <label for="salary">Salary:</label> -->
-        <input type="number" ng-model="employees.newEmployee.salary" name="salary" placeholder="Salary" />
-    </div>
+    <form id="employee-form">
 
         <div class="form-group">
-            <!-- <label for="title">Title:</label> -->
-            <input type="text" ng-model="employees.newEmployee.title" name="title" placeholder="Title" />
+            <label for="first_name">First Name</label>
+            <input class="form-control" type="text" ng-model="employees.newEmployee.first_name" name="first_name" />
         </div>
 
-    <!-- <div class="form-group"> -->
-        <!-- <label for="status">Status:</label> -->
-        <!-- <input type="text" ng-model="employees.newEmployee.status" name="status" placeholder="Status" /> -->
-    <!-- </div> -->
+        <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input class="form-control" type="text" ng-model="employees.newEmployee.last_name" name="last_name" />
+        </div>
 
-    <button class="btn btn-primary" ng-click="employees.addEmployee()"><i class="material-icons">add</i></button>
-</form>
+        <div class="form-group">
+            <label for="employee_id">Employee ID</label>
+            <input class="form-control" type="text" ng-model="employees.newEmployee.employee_id" name="employee_id" />
+        </div>
 
-<h2>Employee Listing</h2>
+        <div class="form-group">
+            <label for="salary">Salary</label>
+            <input class="form-control" type="number" ng-model="employees.newEmployee.salary" name="salary" />
+        </div>
 
-<table class="table table-bordered">
-    <thead>
-        <tr class="active">
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Employee ID</th>
-            <th>Salary</th>
-            <th>Title</th>
-            <th>Status</th>
-            <th>Chg Status</th>
-            <th>Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- <tr class="employeeRow" ng-repeat="employee in employees.employees"> -->
-          <tr class="employeeRow" ng-repeat="employee in employees.employees" ng-class="{ inactive: employee.status == 'Inactive' }" >
-            <td>{{employee.first_name}}</td>
-            <td>{{employee.last_name}}</td>
-            <td class="text-center">{{employee.employee_id}}</td>
-            <td class="text-right">{{employee.salary}}</td>
-            <td>{{employee.title}}</td>
-            <td class="text-center">{{employee.status}}</td>
-            <td><button class="btn btn-default statusButton" ng-click="employees.toggleStatus(employee)">
-              <span> {{ employee.status === 'Active' ? 'Deactivate' : 'Reactivate' }}"</span>            </button></td>
-            <td><button class="btn btn-default deleteButton" ng-click="employees.deleteEmployee(employee)"><i class="material-icons">delete_forever</i></button></td>
-        </tr>
-    </tbody>
-</table>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input class="form-control" type="text" ng-model="employees.newEmployee.title" name="title" />
+        </div>
+
+        <button class="btn btn-primary" ng-click="employees.addEmployee()"><i class="material-icons">add</i></button>
+    </form>
+
+</div>
+
+<div class="employee-listing col-md-9">
+    <h2>Employee Listing</h2>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr class="active">
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Employee ID</th>
+                <th>Salary</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Chg Status</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr class="employeeRow" ng-repeat="employee in employees.employees"> -->
+            <tr class="employeeRow" ng-repeat="employee in employees.employees" ng-class="{ inactive: employee.status == 'Inactive' }">
+                <td>{{employee.first_name}}</td>
+                <td>{{employee.last_name}}</td>
+                <td class="text-center">{{employee.employee_id}}</td>
+                <td class="text-right">{{employee.salary}}</td>
+                <td>{{employee.title}}</td>
+                <td class="text-center">{{employee.status}}</td>
+                <td><button class="btn btn-secondary statusButton" ng-click="employees.toggleStatus(employee)">
+                  <span> {{ employee.status === 'Active' ? 'Deactivate' : 'Reactivate' }}</span></button></td>
+                <td><button class="btn btn-danger deleteButton" ng-click="employees.deleteEmployee(employee)"><i class="material-icons">delete_forever</i></button></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

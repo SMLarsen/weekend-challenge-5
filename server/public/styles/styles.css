@@ -29,23 +29,26 @@ th {
   text-align: center;
 }
 
-#employee-form {
+/*#employee-form {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-}
+}*/
 
 .inactive {
   background-color: lightgrey;
-  color: #a41425;
+  color: #ec524d;
   font-style: italic;
 }
 
 .statusButton, .deleteButton {
-  margin:auto;
-  display:block;
   height: 40px;
+}
+
+.statusButton {
+  background-color: #5479b0;
+  color: white;
 }
 
 table th {
@@ -56,12 +59,12 @@ table th {
      vertical-align: middle;
 }
 
-.budgetAnalysis {
-  margin-top: 75px;
-}
-
 .budgetAnalysis td {
   font-size: 1.5em;
   text-align: right;
   padding-left: 25px;
+}
+
+.navbar-btn {
+  font-size: 1.5em;
 }
