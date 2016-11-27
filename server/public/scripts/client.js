@@ -17,27 +17,35 @@ app.config(['$routeProvider', function($routeProvider) {
         });
 }]);
 
-//=================  Factories  ====================================
+//=================  Services  ====================================
 
 // app.value('CurrentBudget', '240000');
 
-app.factory('monthlyBudget', ['$http', function monthlyBudgetFactory($http) {
-    console.log('Budget Factory Runnning');
+app.service('monthlyBudget', ['$http', '$q', function monthlyBudgetService($http, $q) {
+    console.log('Budget Service Runnning');
     var self = this;
     var currBudget = {};
     var today = new Date();
     var currMonth = today.getMonth() + 1;
     var currYear = today.getFullYear();
 
-    $http.get('/budgets/' + currMonth + '/' + currYear)
-        .then(function(response) {
-            console.log(response.data[0]);
-            currBudget.monthly_budget = response.data[0].monthly_budget;
-        });
-    console.log('Current budget:', currBudget.monthly_budget);
-    console.log(currBudget);
-    return currBudget;
-}]); // end of currentbudget factory
+    var deferred = $q.defer();
+
+    this.getCurrentBudget = function () {
+            return $http.get('/budgets/' + currMonth + '/' + currYear)
+                .then(function (response) {
+                    // promise is fulfilled
+                    deferred.resolve(response.data);
+                    // promise is returned
+                    return deferred.promise;
+                }, function (response) {
+                    // the following line rejects the promise
+                    deferred.reject(response);
+                    // promise is returned
+                    return deferred.promise;
+                });
+        };
+}]); // end of currentbudget Service
 
 //=================  Controllers  =================================
 
@@ -47,7 +55,20 @@ app.controller('EmployeesController', ['monthlyBudget', '$http', function(monthl
 
     self.months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-    self.currentBudget = monthlyBudget.monthly_budget;
+    // invoke service to get current budget
+    monthlyBudget.getCurrentBudget()
+           .then(
+               function (result) {
+                   // promise was fullfilled (regardless of outcome)
+                   // checks for information will be peformed here
+                   self.currentBudget = result[0].monthly_budget;
+               },
+               function (error) {
+                   // handle errors here
+                   console.log(error.statusText);
+               }
+           );
+
     var newEmployee = {};
 
     self.employees = [];
@@ -71,7 +92,6 @@ app.controller('EmployeesController', ['monthlyBudget', '$http', function(monthl
                 self.monthlySalaries = response.data[0].monthly_salaries;
                 // console.log(self.monthlySalaries);
                 self.budgetVariance = self.currentBudget - self.monthlySalaries;
-                console.log(self.monthlySalaries, self.currentBudget, self.budgetVariance);
             });
     } // end function getSalaries
 
@@ -117,10 +137,23 @@ app.controller('EmployeesController', ['monthlyBudget', '$http', function(monthl
 app.controller('BudgetsController', ['$http', 'monthlyBudget', function($http, monthlyBudget) {
     console.log('Budgets controller running');
     var self = this;
-    this.currentBudget = monthlyBudget.monthly_budget;
     var newBudget = {};
 
     self.budgets = [];
+
+    // invoke service to get current budget
+    monthlyBudget.getCurrentBudget()
+           .then(
+               function (result) {
+                   // promise was fullfilled (regardless of outcome)
+                   // checks for information will be peformed here
+                   self.currentBudget = result[0].monthly_budget;
+               },
+               function (error) {
+                   // handle errors here
+                   console.log(error.statusText);
+               }
+           );
 
     getBudgets();
     // console.log('getting budgets: ', self.budgets);
