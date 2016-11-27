@@ -111,12 +111,12 @@ app.controller('EmployeesController', ['monthlyBudget', '$http', function(monthl
 
     // function: toggleStatus - update
     self.toggleStatus = function(employee) {
-        var status = '';
+
+        var status = 'Active';
         if (employee.status === "Active") {
             status = "Inactive";
-        } else {
-            status = "Active";
         }
+
         $http.put('/employees/status/' + employee.id + '/' + status)
             .then(function(response) {
                 console.log('STATUS changed. Getting employee again.');

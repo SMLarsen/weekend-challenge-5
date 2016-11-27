@@ -24,7 +24,8 @@
 }
 
 .navbar-btn {
-    font-size: 1.5em;
+    font-size: 1.4em;
+    font-weight: bold;
 }
 
 
@@ -62,11 +63,15 @@ table th {
     height: 40px;
 }
 
-.statusButton {
+.activateButton {
     background-color: #5479b0;
     color: white;
 }
 
+.reactivateButton {
+  background-color: #345d47;
+  color: lightgrey;
+}
 
 /*=================== Budget Analysis Styling ===================*/
 
