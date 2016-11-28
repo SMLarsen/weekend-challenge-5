@@ -54,8 +54,8 @@ table th {
 /*=================== Employees View Styling =================*/
 
 .inactive {
-    background-color: #b5c4bc;
-    color: #ec524d;
+    background-color: #c5d5cc;
+    color: #345d47;
     font-style: italic;
 }
 
@@ -70,7 +70,7 @@ table th {
 
 .reactivateButton {
   background-color: #345d47;
-  color: lightgrey;
+  color: #c5d5cc;
 }
 
 /*=================== Budget Analysis Styling ===================*/

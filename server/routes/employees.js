@@ -121,6 +121,8 @@ router.put('/status/:id/:status', function(req, res) {
       'UPDATE employees SET status = $1 WHERE id = $2',
       [status, id],
       function(err, result) {
+        done(); // close the connection.
+
         if(err) {
           console.log('status update error: ', err);
           res.sendStatus(500);
